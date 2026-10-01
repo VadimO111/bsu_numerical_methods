@@ -12,6 +12,7 @@ endif()
 
 add_executable(matmul_benchmark
         main.cpp
+        blocks_matmul.cpp
         blocks_matmul.h
         matrix.h
 )

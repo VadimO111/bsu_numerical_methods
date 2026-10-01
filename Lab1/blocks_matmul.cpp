@@ -17,7 +17,7 @@ void matmul::MatMul(const Matrix<T> &A, const Matrix<T> &B, Matrix<T> &C) {
 
 template<typename T>
 void matmul::BlockMatMul(const Matrix<T> &A, const Matrix<T> &B, Matrix<T> &C, const std::size_t r) {
-    assert(r != 0, "Block size must be positive");
+    assert(r != 0 && "Block size must be positive");
     C.fill(0);
     for (size_t i_block = 0; i_block * r < A.size(); ++i_block) {
         for (size_t k_block = 0; k_block * r < A.size(); ++k_block) {
@@ -53,3 +53,44 @@ void matmul::RandomInit(Matrix<T> &mat, T min_val, T max_val) {
         }
     }
 }
+
+
+// Явная инстанция шаблонов
+
+template void matmul::MatMul<double>(
+    const Matrix<double>&,
+    const Matrix<double>&,
+    Matrix<double>&
+);
+
+template void matmul::BlockMatMul<double>(
+    const Matrix<double>&,
+    const Matrix<double>&,
+    Matrix<double>&,
+    std::size_t
+);
+
+template void matmul::RandomInit<double>(
+    Matrix<double>&,
+    double,
+    double
+);
+
+template void matmul::MatMul<int>(
+    const Matrix<> &,
+    const Matrix<> &,
+    Matrix<> &
+);
+
+template void matmul::BlockMatMul<int>(
+    const Matrix<> &,
+    const Matrix<> &,
+    Matrix<> &,
+    std::size_t
+);
+
+template void matmul::RandomInit<int>(
+    Matrix<> &,
+    int,
+    int
+);
